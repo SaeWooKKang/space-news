@@ -1,6 +1,6 @@
 import Header from "../components/common/Header.js";
 
-function LaunchPlan() {
+function News() {
   const $wrapper = document.createElement('div');
   $wrapper.setAttribute('id', 'Launchplan');
 
@@ -12,4 +12,4 @@ function LaunchPlan() {
   return $wrapper;
 }
 
-export default LaunchPlan;
+export default News;

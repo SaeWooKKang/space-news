@@ -5,8 +5,8 @@ function Landing() {
   $landing.setAttribute('id', 'landingPage');
 
   $landing.append(
-    'Landing Page!',
-    Header()
+    Header(),
+    'Landing Page!'
   );
 
   return $landing;
