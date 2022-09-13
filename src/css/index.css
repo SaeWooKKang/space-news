@@ -1,0 +1,36 @@
+/* Header */
+header {
+  height: 64px;
+  width: 100%;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 10;
+  background-color: white;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.5);
+}
+header > nav {
+  padding: 0 20px;
+  height: 100%;
+}
+header > nav > ul {
+  width: 100%;
+  height: 100%;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header > nav > ul > li {
+  font-size: 1.3rem;
+ 
+}
+header > nav > ul > li > a {
+  text-decoration: none;
+  color: black;
+}
+/* ---------------------------------------- */

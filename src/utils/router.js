@@ -1,13 +1,13 @@
-import { $ } from '../utils/dom.js';
+import { $ } from './dom.js';
 
 // Page Components
 import Landing from '../pages/Landing.js';
 import NotFound from '../pages/NotFound.js';
-import LaunchPlan from '../pages/LaunchPlan.js';
+import News from '../pages/News.js';
 
 export const routes = [
   { path: /^\/$/, component: Landing },
-  { path: /^\/plan$/, component: LaunchPlan}
+  { path: /^\/news$/, component: News}
 ];
 export const router = (routes, path) => {
   const component = routes
