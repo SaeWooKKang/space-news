@@ -13,12 +13,10 @@ function Header() {
   `;
 
   $header.innerHTML = template;
-
-  $header.addEventListener('click', clickLink)
+  
+  $header.addEventListener('click', navigate())
 
   return $header;
 };
 
 export default Header;
-
-const clickLink = e => navigate(e);

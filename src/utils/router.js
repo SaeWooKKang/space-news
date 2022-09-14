@@ -17,13 +17,21 @@ export const router = (routes, path) => {
   $('#root').innerHTML = '';
   $('#root').append(component());
 };
-export const navigate = e => {
-  // [x] 여기에 유효성 검사 넣기 
-  if (!e.target.matches('#navigation > li > a')) return;
-  e.preventDefault();
 
-  const path = e.target.getAttribute('href');
-  
-  window.history.pushState({}, null, path);
-  router(routes, path);
+// [x] 현재 header a태그에 종속적인데 path 받아서도 이동 할 수 있도록 구현
+  // => 클로저 활용
+export const navigate = path => e => {
+  if (path) {
+    window.history.pushState({}, null, path);
+    router(routes, path);
+  } 
+  else {
+    if (!e.target.matches('#navigation > li > a')) return;
+    e.preventDefault();
+
+    const path = e.target.getAttribute('href');
+    
+    window.history.pushState({}, null, path);
+    router(routes, path);
+  }
 };
