@@ -1,21 +1,21 @@
 import Header from "../components/common/Header.js";
 import UpComing from '../components/UpComing.js';
+import Past from "../components/Past.js";
+import Moves from "../components/common/Moves.js";
 
-import {$} from '../utils/dom.js';
+import { $ } from '../utils/dom.js';
 
-// [x] 비동기 요청 기다리기까지 header먼저 보이게 하기
-  // [x] root dom에 먼저 넣는것으로 해결
-
-// [x] Upcoming Title 
 async function News() {
   const $wrapper = document.createElement('div');
   $wrapper.setAttribute('id', 'NewsPage');
-
+  
   $('#root').append(
-    Header()
+    Header(),
+    Moves()
   );
   $wrapper.append(
-    await UpComing()
+    await UpComing(),
+    await Past()
   );
 
   return $wrapper;
