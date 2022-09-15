@@ -13,7 +13,7 @@ header {
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.5);
 }
 header > nav {
-  padding: 0 20px;
+  padding: 0 64px;
   height: 100%;
 }
 header > nav > ul {
@@ -79,13 +79,42 @@ header > nav > ul > li > a {
 /* ------------ News Page-------------- */
 #NewsPage {
   position: absolute;
-  top: 100px;
+  top: 150px;
   width: 100%;
   height: auto;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
-/* ------------ Upcoming Page-------------- */
+/* --- news/Moves Component --- */
+#Moves{
+  width: 100%;
+  height: 40px;
+  position: fixed;
+  top: 65px;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #414187;
+
+}
+#Moves .move {
+  text-decoration: none;
+  color: #f1f1f1;
+  font-size: 1.2rem;
+
+  /* background-color: #5555b1;
+  border-radius: 4px; */
+  padding: 10px 20px;
+}
+#Moves .move:hover {
+  cursor: pointer;
+}
+#Moves .move:nth-child(1) {
+  margin-right: 10px;
+}
+/* --- news/Upcoming Component --- */
 #UpComing {
   display: flex;
   flex-direction: column;
@@ -93,6 +122,22 @@ header > nav > ul > li > a {
   width: 90%;
 }
 #UpComing h1 {
+  width: 500px;
+  padding: 10px 25px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #f1f1f1;
+  margin-bottom: 20px;
+  background-color: rgb(85, 85, 177);
+}
+/* --- news/Past Component --- */
+#Past {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+}
+#Past h1 {
   width: 500px;
   padding: 10px 25px;
   font-size: 1.5rem;
