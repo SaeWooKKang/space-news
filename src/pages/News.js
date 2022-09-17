@@ -5,7 +5,7 @@ import Moves from "../components/common/Moves.js";
 
 import { $ } from '../utils/dom.js';
 
-async function News() {
+function News() {
   const $wrapper = document.createElement('div');
   $wrapper.setAttribute('id', 'NewsPage');
   
@@ -14,8 +14,8 @@ async function News() {
     Moves()
   );
   $wrapper.append(
-    await UpComing(),
-    await Past()
+    UpComing(),
+    Past()
   );
 
   return $wrapper;

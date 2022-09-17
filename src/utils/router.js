@@ -9,13 +9,13 @@ export const routes = [
   { path: /^\/$/, component: Landing },
   { path: /^\/news$/, component: News}
 ];
-export const router = async (routes, path) => {
+export const router = (routes, path) => {
   const component = routes
     .find(route => route.path.test(path))
     ?.component || NotFound;
   
   $('#root').innerHTML = '';
-  $('#root').append(await component());
+  $('#root').append(component());
 };
 export const navigate = path => e => {
   if (path) {
