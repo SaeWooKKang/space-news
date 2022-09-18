@@ -1,4 +1,6 @@
+import { $ } from "../utils/dom.js";
 import Card from "./common/Card.js";
+import Loading from "./common/Loading.js";
 
 // 문제
   // 컴포넌트자체가 비동기이다. 
@@ -33,6 +35,8 @@ function Past() {
   $wrapper.innerHTML = template;
 
   const componentDidMounted = async () => {
+    $wrapper.append(Loading());
+
     const past = await getPast();
   
     let i = 10;
@@ -45,6 +49,8 @@ function Past() {
     for(let j = 0; j < 10; j++) {
       cards.push(Card(past[past.length - 1 - j]));
     }
+
+    if ($('#Loading')) $('#Loading').remove();
     $wrapper.append(...cards);
   }
   componentDidMounted();
