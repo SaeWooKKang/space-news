@@ -1,4 +1,7 @@
+import { $ } from '../utils/dom.js';
+
 import Card from "./common/Card.js";
+import Loading from "./common/Loading.js";
 
 function UpComing() {
   const $wrapper = document.createElement('section');
@@ -10,6 +13,9 @@ function UpComing() {
   $wrapper.innerHTML = template;
 
   const componentDidMounted = async () => {
+    // Loading 추가
+    $wrapper.append(Loading());
+
     const upcoming = await getUpcoming();
     
     for (let i = 0; i < upcoming.length; i++) {
@@ -18,6 +24,8 @@ function UpComing() {
     }
 
     const cards = upcoming.map(obj => Card(obj)); // [element, ...]
+    // Loading 제거
+    if ($('#Loading')) $('#Loading').remove();
     $wrapper.append(...cards);
   }
   componentDidMounted();
