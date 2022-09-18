@@ -1,39 +1,53 @@
 import Card from "./common/Card.js";
 
-// [x] 과거 데이터 추가 
-  // [x] Upcoming 컴포넌트와 비슷하므로 참고하여 작업
-  // [x] api 호출 순서 확인
-  // [x] 실제 응답 확인
-  // [x] api 가공
-  // [x] 10개만 요청, 더보기 클릭시 추가 요청
-  // [x] Upcoming 하단에 추가 
-  // [x] 상단에 링크 태그 생성
-  // [x] style 적용
-async function Past() {
+// 문제
+  // 컴포넌트자체가 비동기이다. 
+  // router에서는 컴포넌트가 fulfilled가 될때까지 기다렸다 렌더링한다.
+  
+  // **기존 router순서**
+  // 기존 dom을 지우고 
+  // 컴포넌트의 비동기요청이 완료되고 template이 완성되면 
+  // dom에 mount한다. 
+  
+  // **문제 발생**
+  // 비동기 요청이 완료되지 않았을 때 페이지를 이동한다면 
+  // 기존 페이지에 추가로 append하게 된다.
+
+// 해결
+  // router함수를 동기함수로 바꾸고
+  // 비동기 컴포넌트를 동기로 바꾸고 
+  // 비동기 요청에 관한 로직은
+  // 'componentDidMount' 함수에 담고 실행한다.
+  // 비동기 로직은 요청하고 즉시 종료되고
+  // 컴포넌트는 html 요소를 반환한다.
+  // componentDidMount함수는 해당 컴포넌트 요소를 
+  // '클로저'로 갖는다.
+  // 비동기 요청이 완료되면 해당 컴포넌트의 요소에 mount한다.
+function Past() {
   const $wrapper = document.createElement('section');
   $wrapper.setAttribute('id', 'Past');
 
-  // past 데이터 얻고
-  const past = await getPast();
-
-  // 최신 10개만 
-  // rocket 이미지 url 합치기
-  let i = 10;
-  while(i--) {
-    const rocket = past[past.length -1 - i].rocket;
-    past[past.length -1 - i].rocket_img = await getRocketImg(rocket);
-  }
-
-  const cards = [];
-  for(let j = 0; j < 10; j++) {
-    cards.push(Card(past[past.length - 1 - j]));
-  }
-  
   const template = `
     <h1>Past.</h1>
   `;
   $wrapper.innerHTML = template;
-  $wrapper.append(...cards);
+
+  const componentDidMounted = async () => {
+    const past = await getPast();
+  
+    let i = 10;
+    while(i--) {
+      const rocket = past[past.length -1 - i].rocket;
+      past[past.length -1 - i].rocket_img = await getRocketImg(rocket);
+    }
+  
+    const cards = [];
+    for(let j = 0; j < 10; j++) {
+      cards.push(Card(past[past.length - 1 - j]));
+    }
+    $wrapper.append(...cards);
+  }
+  componentDidMounted();
 
   return $wrapper;
 };

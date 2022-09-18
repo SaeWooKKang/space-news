@@ -1,24 +1,26 @@
 import Card from "./common/Card.js";
 
-async function UpComing() {
+function UpComing() {
   const $wrapper = document.createElement('section');
   $wrapper.setAttribute('id', 'UpComing');
 
-  // upcoming데이터 얻고
-  const upcoming = await getUpcoming();
-
-  // rocket 이미지 url 합치기
-  for (let i = 0; i < upcoming.length; i++) {
-    const rocket = upcoming[i].rocket;
-    upcoming[i].rocket_img = await getRocketImg(rocket);
-  }
-  const cards = upcoming.map(obj => Card(obj)); // [element, ...]
-  
   const template = `
     <h1>Upcoming.</h1>
   `;
   $wrapper.innerHTML = template;
-  $wrapper.append(...cards);
+
+  const componentDidMounted = async () => {
+    const upcoming = await getUpcoming();
+    
+    for (let i = 0; i < upcoming.length; i++) {
+      const rocket = upcoming[i].rocket;
+      upcoming[i].rocket_img = await getRocketImg(rocket);
+    }
+
+    const cards = upcoming.map(obj => Card(obj)); // [element, ...]
+    $wrapper.append(...cards);
+  }
+  componentDidMounted();
 
   return $wrapper;
 };
