@@ -250,4 +250,5 @@ header > nav > ul > li > a {
 /* -------- last-page --------- */
 .last-page {
   color: rgb(157, 150, 150);
+  margin: 20px 0;
 }
