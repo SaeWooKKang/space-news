@@ -1,4 +1,5 @@
 import { $ } from '../utils/dom.js';
+import { get, BASE_URL, getRocketImg } from '../utils/api.js';
 
 import Card from "./common/Card.js";
 import Loading from "./common/Loading.js";
@@ -16,12 +17,13 @@ function UpComing() {
     // Loading 추가
     $wrapper.append(Loading());
 
-    const upcoming = await getUpcoming();
-    
-    for (let i = 0; i < upcoming.length; i++) {
-      const rocket = upcoming[i].rocket;
-      upcoming[i].rocket_img = await getRocketImg(rocket);
-    }
+    const upcoming = await get(`${ BASE_URL }/v5/launches/upcoming`);
+    const rocket_img_urls = upcoming.map(obj => getRocketImg(obj.rocket));
+    const prepared_rocket_img_urls = await Promise.allSettled(rocket_img_urls);
+
+    prepared_rocket_img_urls.forEach((obj, i) => { 
+      upcoming[i].rocket_img = obj.value;
+    });
 
     const cards = upcoming.map(obj => Card(obj)); // [element, ...]
     // Loading 제거
@@ -34,17 +36,3 @@ function UpComing() {
 };
 
 export default UpComing;
-
-const getUpcoming = async () => {
-  const upcoming = await fetch('https://api.spacexdata.com/v5/launches/upcoming')
-    .then(res => res.json()); 
-  return upcoming;
-}
-const getRocketImg = async id => {
-  const rocketAPI = 'https://api.spacexdata.com/v4/rockets/';
-  const rocketImg = await fetch(rocketAPI + id)
-    .then(res => res.json())
-    .then(res => res.flickr_images[1]);
-
-  return rocketImg;
-}

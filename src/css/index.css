@@ -201,8 +201,11 @@ header > nav > ul > li > a {
   right: 20px;
   width: 50px;
   height: 50px;
-
+  
   transform:rotate(-90deg);
+}
+#Arrow img:hover {
+  cursor: pointer;
 }
 /* -------- Loading --------- */
 #Loading {
@@ -242,4 +245,10 @@ header > nav > ul > li > a {
   to{
       transform: translateY(0);
   }
+}
+
+/* -------- last-page --------- */
+.last-page {
+  color: rgb(157, 150, 150);
+  margin: 20px 0;
 }
