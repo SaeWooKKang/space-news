@@ -246,9 +246,31 @@ header > nav > ul > li > a {
       transform: translateY(0);
   }
 }
-
 /* -------- last-page --------- */
 .last-page {
   color: rgb(157, 150, 150);
   margin: 20px 0;
+}
+/* -------- Slider --------- */
+#Slider {
+  width: 700px;
+  height: 400px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  filter: drop-shadow(0 0.3rem 0.4rem rgba(0, 0, 0, 0.5));
+}
+#Slider .slides {
+  display: block;
+  width: 4000px;
+  height: 100%;
+}
+#Slider .slide {
+  width: 700px;
+  height: 100%;
+  float: left;
+}
+#Slider img {
+  width: 700px;
+  height: 400px;
+  object-fit: cover;
 }
