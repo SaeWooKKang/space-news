@@ -12,7 +12,7 @@ function Home() {
 
   const template = `
     <h1 class='home-ment'>
-      Do you want more space information?
+      Are you interested in spaceX's plan?
     </h1>
     <button class='home-btn'>
       Watch the news
