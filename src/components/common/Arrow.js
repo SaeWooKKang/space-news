@@ -4,7 +4,7 @@ function Arrow() {
   $wrapper.setAttribute('id', 'Arrow');
 
   const template = `
-    <img src='/src/assets/arrow.svg'>
+    <img src='../../assets/arrow.svg'>
   `;
   $wrapper.innerHTML = template;
   $wrapper.addEventListener('click', moveToTop);
