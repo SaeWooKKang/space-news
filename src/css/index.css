@@ -1,3 +1,14 @@
+/* 
+  <문제>
+  Card 컴포넌트 Mount시 버벅임 발생
+  주요 원인: backdrop-filter 
+
+  <해결>
+  #Header의 경우 스크롤 되므로 배경을 불투명하게 할 필요가 있지만,
+  #Card의 경우 고정 위치이고 배경이 단색이므로 필요하지 않음
+
+    >> backdrop-filter 제거, selector 단계 최소화 
+*/
 /* body */
 body {
   width: 100%;
@@ -15,7 +26,7 @@ body {
   justify-content: center;
 }
 /* Header */
-header {
+#Header {
   height: 55px;
   width: 80%;
   
@@ -32,11 +43,11 @@ header {
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
-header > nav {
+#Header nav {
   padding: 0 64px;
   height: 100%;
 }
-header > nav > ul {
+#Header nav > ul {
   width: 100%;
   height: 100%;
   
@@ -44,10 +55,10 @@ header > nav > ul {
   justify-content: space-between;
   align-items: center;
 }
-header > nav > ul > li {
+#Header li {
   font-size: 1.3rem;
 }
-header > nav > ul > li > a {
+#Header li a {
   text-decoration: none;
   font-weight: 600;
   color: black;
@@ -117,7 +128,7 @@ header > nav > ul > li > a {
   align-items: center;
 }
 /* --- news/Moves Component --- */
-#Moves{
+#Moves {
   width: 250px;
   height: 40px;
 
@@ -169,8 +180,6 @@ header > nav > ul > li > a {
 
   background: rgba( 250, 250, 250, 0.5 );
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 3px );
-  -webkit-backdrop-filter: blur( 3px );
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
@@ -196,8 +205,6 @@ header > nav > ul > li > a {
 
   background: rgba( 250, 250, 250, 0.5 );
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 3px );
-  -webkit-backdrop-filter: blur( 3px );
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
@@ -210,14 +217,12 @@ header > nav > ul > li > a {
   width: 80%;
   height: 200px;
   padding: 20px;
-  
   margin-bottom: 10px;
-  font-weight: 600;
-  color: black;
+
   background: rgba( 250, 250, 250, 0.5 );
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 3px );
-  -webkit-backdrop-filter: blur( 3px );
+  
+  
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
@@ -229,9 +234,6 @@ header > nav > ul > li > a {
   margin-right: 30px;
 }
 #Card .card-info {
-  display: flex;
-  flex-direction: column;
-
   width: 100%;
   height: 100%;
 
@@ -243,11 +245,8 @@ header > nav > ul > li > a {
 
   margin-bottom: 40px;
 }
-#Card .card-info .card-info-date {
-  display: flex;
-}
-#Card .card-info .card-info-date div {
-  margin-right: 10px;
+#Card .card-info-date-launch  {
+  margin-right: 5px;
   font-weight: bold;
 }
 /* -------- Arrow --------- */
