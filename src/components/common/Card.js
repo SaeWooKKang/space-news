@@ -10,8 +10,8 @@ function Card(plan) {
       <h2>${ plan.name }</h2>
       
       <div class='card-info-date'>
-        <div>Launch: </div>
-        <p>${ plan.date_local }</p>
+        <span class='card-info-date-launch'>Launch: </span>
+        <span>${ plan.date_local }</span>
       </div>
     </div>
   `;

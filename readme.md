@@ -3,7 +3,7 @@
 ⏳ **2022.09.12 - 2022.09.24**
 
 ## OverView
-<img width='80%' src='https://user-images.githubusercontent.com/87258182/192084328-ca82df78-6965-462a-8993-a25d0376e74e.gif'>
+<img width='80%' src='https://user-images.githubusercontent.com/87258182/192129992-40c55f52-43b1-464d-b814-043307328601.gif'>
 
 ## About 
 - spaceX의 api를 활용하여 발사 계획 및 기록을 확인할 수 있는 웹 앱 입니다.
@@ -22,3 +22,6 @@ npm install
 
 npm start
 ```
+## Update 
+**2022.09.25**  
+- Card 컴포넌트 마운트시 버벅임 해결

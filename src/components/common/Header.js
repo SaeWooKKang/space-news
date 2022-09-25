@@ -2,6 +2,7 @@ import { navigate } from '../../utils/router.js'
 
 function Header() {
   const $header = document.createElement('header');
+  $header.setAttribute('id', 'Header');
 
   const template = `
     <nav>
