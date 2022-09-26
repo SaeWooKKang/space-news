@@ -1,7 +1,12 @@
-import { routes, router } from "./utils/router.js";
+import { router } from "./utils/router.js";
 
-router(routes, window.location.pathname);
+// [x] app 함수로 초기 실행 감싸기
+const app = () => {
+  router.navigate(window.location.pathname);
 
-window.addEventListener('popstate', () => 
-  router(routes, window.location.pathname)
-);
+  window.addEventListener('popstate', () => 
+    router.navigate(window.location.pathname)
+  );
+}
+
+app();
