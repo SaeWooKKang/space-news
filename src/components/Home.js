@@ -1,4 +1,4 @@
-import { navigate } from "../utils/router.js";
+import { router } from "../utils/router.js";
 
 // 구현 사항
 // [x] 이미지 비동기 요청 로직
@@ -23,7 +23,7 @@ function Home() {
 
   $wrapper.querySelector('.home-btn').addEventListener(
     'click',
-    navigate('/news')
+    () => router.navigate('/news')
   );
 
   return $wrapper;

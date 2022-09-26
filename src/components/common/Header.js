@@ -1,4 +1,5 @@
-import { navigate } from '../../utils/router.js'
+import { router } from '../../utils/router.js'
+
 
 function Header() {
   const $header = document.createElement('header');
@@ -15,9 +16,17 @@ function Header() {
 
   $header.innerHTML = template;
   
-  $header.addEventListener('click', navigate())
+  $header.addEventListener('click', move);
 
   return $header;
 };
 
 export default Header;
+
+const move = e => {
+  if (!e.target.matches('#navigation > li > a')) return;
+  e.preventDefault();
+  const path = e.target.getAttribute('href');
+
+  router.navigate(path);
+}
